@@ -1,4 +1,4 @@
-import React,{ useEffect, useState } from 'react';
+import React from 'react';
 import CardMovie from '../../Components/CardMovie';
 import CarrouselMovies from '../../Components/CarrouselMovies';
 import Description from '../../Components/DescriptionMovie';
@@ -9,21 +9,22 @@ import { useCarousel } from '../../Hooks/MoveSelectShow';
 import { Container } from './styles';
 
 
+
 const Home: React.FC = () => {
-    const { indexCard } = useCarousel();
+    const { indexCard, listData } = useCarousel();
 
     return (
-        <Container image={movies[Number(indexCard)].backdrop_path}>
+        <Container image={listData[Number(indexCard)].backdrop_path}>
             <Head/>
             <Description 
-                Name={movies[Number(indexCard)].title} 
-                Description={movies[Number(indexCard)].overview}
+                Name={listData[Number(indexCard)].title} 
+                Description={listData[Number(indexCard)].overview}
             />
-            <CarrouselMovies size={movies.length}>
+            <CarrouselMovies size={10}>
                 {
                     
-                    movies.length > 0 &&
-                    movies.map((movie, index) => (
+                    listData.length > 0 &&
+                    listData.map((movie, index) => (
                         <CardMovie
                             key={index}
                             image={movie.poster_path}
@@ -33,6 +34,8 @@ const Home: React.FC = () => {
                                 index === (Number(indexCard) + 1) ? "next" 
                                 : 
                                 Number(indexCard) === 0 ? "first" 
+                                :
+                                index === (listData.length -1 ) ? "last" 
                                 : ""
                             }
                             

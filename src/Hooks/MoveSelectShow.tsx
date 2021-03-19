@@ -6,7 +6,7 @@ interface ICarouselContext{
     indexCard: Number;
     nextCard(): void;
     previousCard(): void;
-    listData: IMovies
+    listData: Array<IMovies>
 }
 
 interface IMovies{
@@ -27,7 +27,18 @@ const CarouselProvider: React.FC = ({ children }) => {
     const [listData, setMovies] = useState([{} as IMovies]);
   
     useEffect(() =>{
-        setMovies(router.getAllMovies())
+        router.getAllMovies().then((comics) =>{
+            setMovies(comics.data.results);
+        }).catch((err) =>{
+            return {
+                data:{
+                    result:{
+                        error: err
+                    }
+                }
+            }
+        });
+        
     }, []);
     
     useEffect(() => {
@@ -38,7 +49,10 @@ const CarouselProvider: React.FC = ({ children }) => {
     }, [indexCard])
 
     const nextCard = () => {
-        setIndexCard(indexCard + 1)
+        
+        if(indexCard + 1 <= (listData.length -1) ){
+            setIndexCard(indexCard + 1)
+        }
        
     }
 

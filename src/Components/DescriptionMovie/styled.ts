@@ -40,6 +40,7 @@ export const Buttons = styled.div`
         svg{
             color: red;
             opacity: .6;
+            cursor: auto;
         }
     }
 `;

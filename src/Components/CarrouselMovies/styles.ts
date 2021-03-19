@@ -3,12 +3,13 @@ import styled from 'styled-components';
 export const Container = styled.div`
   
     width: 100vw;
-    height: 92vh;
+    height: 100vh;
     background: #000000a8;
     
     .carousel{
         height: 100%;
-        padding: 0 2rem;
+        padding: 4rem 2rem 0 2rem;
+        
 
         display: flex;
         align-items: center;

@@ -3,7 +3,8 @@ import React from 'react';
 import { 
   Container, 
   Logo,
-  Options 
+  Options,
+  Option
 } from './styles';
 
 const Head: React.FC = () => {
@@ -11,8 +12,12 @@ const Head: React.FC = () => {
     <Container>
         <Logo>Movies</Logo>
         <Options>
-          <h3>Movie</h3>
-          <h3>Serie</h3>
+          <Option className="is-select">
+            <h3 >Movie</h3>
+          </Option>
+          <Option>
+            <h3>Serie</h3>
+          </Option>
         </Options>
     </Container>
   );

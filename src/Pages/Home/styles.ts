@@ -24,6 +24,14 @@ export const Container = styled.div<IContainerProps>`
     .first{
         padding-left: 50rem;
     }
+
+    .last{
+        padding-right: 5rem;
+        ::after{
+            content:'';
+            padding-left: 5rem;
+        }
+    }
     
 `;
 
