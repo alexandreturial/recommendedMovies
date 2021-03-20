@@ -18,9 +18,6 @@ export const Container = styled.section<IContainer>`
       height: 525px;
     ` }
   }
-
-  
-  
 `;
 
 export const Poster = styled.div`

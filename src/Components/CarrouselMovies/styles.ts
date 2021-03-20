@@ -12,13 +12,33 @@ export const Container = styled.div`
         
 
         display: flex;
+       
         align-items: center;
         justify-content: space-between;
 
         overflow-x: hidden; 
         scroll-behavior: smooth; 
-        h1{
-            position: absolute;
-        }
+       
     }
+
+    .prev{
+       
+       padding: 0 61% 0 3%;
+   }
+
+   .next{
+       padding-left: 6%;
+   }
+
+   .first{
+       padding-left: 61%;
+   }
+
+   .last{
+       padding-right: 5rem;
+       ::after{
+           content:'';
+           padding-left: 5rem;
+       }
+   }
 `;

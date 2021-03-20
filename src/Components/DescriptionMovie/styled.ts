@@ -2,15 +2,15 @@ import styled from "styled-components";
 
 export const Container = styled.div`
    
-    width: 41rem;
-    height: 21rem;
+    /* width: 41rem;
+    height: 21rem; */
     position: absolute;
-    
+    top: 12rem; 
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    left: 7rem;
-    top: 12rem; 
+    padding: 0 3rem;
     div{
         h1{
         
@@ -20,6 +20,15 @@ export const Container = styled.div`
             font-size: .8rem;
             color: white;
         }
+    }
+
+
+    @media(min-width: 780px){
+        width: 41rem;
+        height: 21rem;
+
+        left: 7rem;
+        
     }
 `;
 

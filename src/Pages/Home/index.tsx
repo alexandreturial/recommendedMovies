@@ -14,37 +14,39 @@ const Home: React.FC = () => {
     const { indexCard, listData } = useCarousel();
 
     return (
-        <Container image={listData[Number(indexCard)].backdrop_path}>
-            <Head/>
-            <Description 
-                Name={listData[Number(indexCard)].title} 
-                Description={listData[Number(indexCard)].overview}
-            />
-            <CarrouselMovies size={10}>
-                {
-                    
-                    listData.length > 0 &&
-                    listData.map((movie, index) => (
-                        <CardMovie
-                            key={index}
-                            image={movie.poster_path}
-                            className={
-                                index === (Number(indexCard) - 1) ? "prev" 
-                                : 
-                                index === (Number(indexCard) + 1) ? "next" 
-                                : 
-                                Number(indexCard) === 0 ? "first" 
-                                :
-                                index === (listData.length -1 ) ? "last" 
-                                : ""
-                            }
-                            
-                            isSelect={index === (indexCard) ? true : false}
-                        />
-                    ))
-                }
-            </CarrouselMovies>
-        </Container>
+        <>
+            <Container image={listData[Number(indexCard)].backdrop_path}>
+                <Description 
+                    Name={listData[Number(indexCard)].title} 
+                    Description={listData[Number(indexCard)].overview}
+                />
+                <CarrouselMovies size={listData.length}>
+                    {
+                        
+                        listData.length > 0 &&
+                        listData.map((movie, index) => (
+                            <CardMovie
+                                key={index}
+                                image={movie.poster_path}
+                                className={
+                                    index === (Number(indexCard) - 1) ? "prev" 
+                                    : 
+                                    index === (Number(indexCard) + 1) ? "next" 
+                                    : 
+                                    Number(indexCard) === 0 ? "first" 
+                                    :
+                                    index === (listData.length -1 ) ? "last" 
+                                    : ""
+                                }
+                                
+                                isSelect={index === (indexCard) ? true : false}
+                            />
+                        ))
+                    }
+                </CarrouselMovies>
+            </Container>
+           
+        </>
     );
 }
 

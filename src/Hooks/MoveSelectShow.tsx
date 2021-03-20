@@ -4,8 +4,10 @@ import router from '../Services/movieApi';
 
 interface ICarouselContext{
     indexCard: Number;
+    isMovie: boolean;
     nextCard(): void;
     previousCard(): void;
+    changeSearch(option: Number): void;
     listData: Array<IMovies>
 }
 
@@ -24,22 +26,38 @@ const CarouselContext = createContext<ICarouselContext>({} as ICarouselContext);
 const CarouselProvider: React.FC = ({ children }) => {
     
     const [indexCard, setIndexCard] = useState(0);
+    const [isMovie, setIsMovie] = useState(true);
     const [listData, setMovies] = useState([{} as IMovies]);
   
     useEffect(() =>{
-        router.getAllMovies().then((comics) =>{
-            setMovies(comics.data.results);
-        }).catch((err) =>{
-            return {
-                data:{
-                    result:{
-                        error: err
+        if(isMovie){
+            router.getAllMovies().then((comics) =>{
+                setMovies(comics.data.results);
+            }).catch((err) =>{
+                return {
+                    data:{
+                        result:{
+                            error: err
+                        }
                     }
                 }
-            }
-        });
+            });
+        }else{
+            router.getAllSeries().then((comics) =>{
+                setMovies(comics.data.results);
+            }).catch((err) =>{
+                return {
+                    data:{
+                        result:{
+                            error: err
+                        }
+                    }
+                }
+            });
+        }
+       
         
-    }, []);
+    }, [isMovie]);
     
     useEffect(() => {
         const el = document.querySelector('.carousel');
@@ -61,8 +79,20 @@ const CarouselProvider: React.FC = ({ children }) => {
             setIndexCard(indexCard - 1)
         }
     }
+
+    const changeSearch = (option: Number) =>{
+        //movies -> 0
+        // seies -> 1
+        console.log(option);
+        if(option !== 0){
+            setIsMovie(false);
+        }else{
+            setIsMovie(true);
+        }
+    }
+
     return (
-        <CarouselContext.Provider value={{listData, indexCard, nextCard, previousCard}}>
+        <CarouselContext.Provider value={{listData, indexCard, nextCard, previousCard, changeSearch, isMovie}}>
             {children}
         </CarouselContext.Provider>
     )
