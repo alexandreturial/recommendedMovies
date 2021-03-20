@@ -2,7 +2,6 @@ import React from 'react';
 import CardMovie from '../../Components/CardMovie';
 import CarrouselMovies from '../../Components/CarrouselMovies';
 import Description from '../../Components/DescriptionMovie';
-import Head from '../../Components/Head';
 
 import { useCarousel } from '../../Hooks/MoveSelectShow';
 
@@ -44,8 +43,8 @@ const Home: React.FC = () => {
                         ))
                     }
                 </CarrouselMovies>
+               
             </Container>
-           
         </>
     );
 }

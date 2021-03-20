@@ -1,6 +1,10 @@
-import styled from "styled-components";
+import styled,{ css} from "styled-components";
 
-export const Container = styled.div`
+interface IContainer{
+    scrollPosition: number
+}
+
+export const Container = styled.div<IContainer>`
     position: fixed;
    
     width: 100vw;
@@ -11,6 +15,10 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    ${props => props.scrollPosition >= 650 && css`
+        background: #000000d1;
+    `}
 
     @media(min-width: 780px){
         padding: 0 10rem;
@@ -25,6 +33,7 @@ export const Logo = styled.h1`
 
 export const Options = styled.div`
     display: flex;
+    justify-content: flex-end;
     
     .is-select{
         &::after{
@@ -36,15 +45,51 @@ export const Options = styled.div`
         }
     }
 `; 
+
 export const Option = styled.button`
     display: flex;
     flex-direction: column;
-    padding: 8px;
+    padding: 8px 10px;
     background: none;
     
     h3{
         color: white;
         font: 400 1.2rem Poppins;
     }
-     
+`; 
+
+export const Search = styled.div`
+    position: relative;
+    
+    svg{
+        position: absolute;
+        bottom: 22%;
+        color: white;
+        width: 25px;
+        height: auto;
+        cursor: pointer;
+    }
+
+`; 
+export const Input  = styled.input`
+    width: 0px;
+   
+    background: none;
+    font: 400 1rem Poppins;
+    color: white;
+   
+    padding: 10px 20px 10px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+
+    &:focus {
+        
+        box-sizing: border-box;
+        border-bottom: 2px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+    }
+
+   
+   
 `; 
