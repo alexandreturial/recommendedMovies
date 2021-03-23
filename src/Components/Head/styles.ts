@@ -1,8 +1,18 @@
-import styled,{ css} from "styled-components";
+import styled,{ css, keyframes} from "styled-components";
 
 interface IContainer{
     scrollPosition: number
 }
+
+const animate = keyframes`
+    from{
+        width: 0%;
+    }
+    to{
+        width: 100%;
+    }
+    
+`;
 
 export const Container = styled.div<IContainer>`
     position: fixed;
@@ -80,14 +90,15 @@ export const Input  = styled.input`
    
     padding: 10px 20px 10px 40px;
     -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
+    transition: width 1s ease-in-out;
 
     &:focus {
         
         box-sizing: border-box;
         border-bottom: 2px solid #ccc;
         border-radius: 4px;
-        width: 100%;
+        animation: ${animate} 1s forwards;
+       
     }
 
    

@@ -18,10 +18,11 @@ import {
 
 const Head: React.FC = () => {
   const [navPositionScroll, setNavPositionScroll] =useState(0);
-  const{ changeSearch, isMovie } = useCarousel();
+  const{ changeSearch, isMovie, search } = useCarousel();
 
   const handleSearch = (e: string ) => {
-    console.log(e)
+     search(e)
+   
   }
 
   window.onscroll = function() {scrollFunction()};
@@ -40,7 +41,14 @@ const Head: React.FC = () => {
             <label htmlFor="search">
               <RiSearch2Line />
             </label>
-            <Input type="text" name="search" id="search" placeholder="Search.." onChange={(e) => handleSearch(e.target.value)}/>
+            <Input type="text" name="search" id="search" placeholder="Search.." 
+            onChange={
+              (e) => setTimeout(() => {
+                handleSearch(e.target.value)
+            }, 2000)
+            
+            }
+            />
           </Search>
            
           <Option className={isMovie ? "is-select" : '' } onClick={() => changeSearch(0)}>
