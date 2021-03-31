@@ -9,8 +9,8 @@ import {
 } from 'react-icons/ri';
 
 interface IDescriptionMovieProps{
-    Name: string;
-    Description: string
+    Name?: string;
+    Description?: string
 }
 
 const DescriptionMovie: React.FC<IDescriptionMovieProps> = ({

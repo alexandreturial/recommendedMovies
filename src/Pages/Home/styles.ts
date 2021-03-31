@@ -14,4 +14,11 @@ export const Container = styled.div<IContainerProps>`
     background-position-x: center;
 `;
 
+export const Card = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background: #403e40; 
+    
+`;
+
 

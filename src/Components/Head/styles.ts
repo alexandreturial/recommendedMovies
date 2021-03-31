@@ -91,7 +91,6 @@ export const Input  = styled.input`
     padding: 10px 20px 10px 40px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 1s ease-in-out;
-
     &:focus {
         
         box-sizing: border-box;

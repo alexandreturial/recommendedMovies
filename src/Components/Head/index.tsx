@@ -21,8 +21,7 @@ const Head: React.FC = () => {
   const{ changeSearch, isMovie, search } = useCarousel();
 
   const handleSearch = (e: string ) => {
-     search(e)
-   
+    search(e)
   }
 
   window.onscroll = function() {scrollFunction()};
@@ -40,8 +39,8 @@ const Head: React.FC = () => {
           <Search>
             <label htmlFor="search">
               <RiSearch2Line />
-            </label>
-            <Input type="text" name="search" id="search" placeholder="Search.." 
+            </label> 
+            <Input type="text" autoComplete="off" name="search" id="search" placeholder="Search.." 
             onChange={
               (e) => setTimeout(() => {
                 handleSearch(e.target.value)

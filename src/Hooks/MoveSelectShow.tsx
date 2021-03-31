@@ -28,7 +28,7 @@ const CarouselProvider: React.FC = ({ children }) => {
     
     const [indexCard, setIndexCard] = useState(0);
     const [isMovie, setIsMovie] = useState(true);
-    const [listData, setMovies] = useState([{} as IMovies]);
+    const [listData, setMovies] = useState([]);
     const [nameMovie, setNameMovie] = useState('');
 
     useEffect(() =>{
